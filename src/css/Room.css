@@ -1,0 +1,46 @@
+.room-list h4 a  {
+  font-size: 90%;
+  padding: 2px;
+
+}
+
+.room-list h4 a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.room-del-btn {
+  font-size: 75%;
+  position: absolute;
+  margin-left: 220px;
+  margin-top: -40px;
+  background: #e84e63;
+  color: white;
+  padding: 3px 10px 3px 10px;
+  border-radius: 5px;
+}
+
+.room-del-btn:hover {
+  background: #e2384d;
+}
+
+.new-room-modal {
+  width: 400px;
+  height: 40px;
+}
+
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
+
+.right-col h4 {
+  margin-left: 10px;
+}
+
+.list-group-item {
+  padding-bottom: 20px;
+}

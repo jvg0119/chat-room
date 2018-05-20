@@ -1,0 +1,34 @@
+
+/* Big tablets to 1200px (widths smaller than the 1140px row) */
+@media only screen and (max-width: 1200px) {
+  body {
+    /*border: 5px solid red;*/
+  }
+
+  .room-list .room-del-btn {
+    margin-left: 130px;
+  }
+}
+
+
+/* Small phones to small tablets: from 481 to 767px */
+@media only screen and (max-width: 767px) {
+  body {
+    /*border: 5px solid blue;*/
+  }
+
+  .room-list .room-del-btn {
+    margin-left: 50px;
+  }
+}
+
+
+/* Small phones from 0 to 480 px */
+@media only screen and (max-width: 400px) {
+  body {
+    /*border: 5px solid green;*/
+  }
+}
+
+
+/*  */
