@@ -44,3 +44,7 @@
 .list-group-item {
   padding-bottom: 20px;
 }
+
+input[type=text] {
+  font-size: 1.5rem;
+}

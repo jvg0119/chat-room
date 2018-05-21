@@ -1,0 +1,30 @@
+.message-edit-btn {
+  font-size: 75%;
+  font-weight: 300;
+  position: absolute;
+  left: 70px;
+  margin-top: -1px;
+  background: #2C6FAE;
+  color: white;
+  padding: 3px 10px 3px 10px;
+  border-radius: 5px;
+}
+
+.message-edit-btn:hover {
+  background: #135899;
+}
+
+.message-update-btn {
+  font-size: 75%;
+  position: absolute;
+  left: 70px;
+  margin-top: -1px;
+  background: #12841d;
+  color: white;
+  padding: 3px 10px 3px 10px;
+  border-radius: 5px;
+}
+
+.message-update-btn:hover {
+  background: #0c6615;
+}

@@ -50,6 +50,15 @@ class Room extends Component {
     this.props.setActiveRoom('');
   }
 
+// enter will submit the create room also
+  handleKeyPress = (e) => {
+    // if(e.key === 'Enter'){  this works also
+    if (e.charCode === 13) {
+      console.log('enter press here! ')
+      this.submitHandler(e)
+    }
+  }
+
   componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
       const room = snapshot.val();
@@ -83,9 +92,8 @@ class Room extends Component {
             bsSize="small"
             onClick={() => this.setState({ show: true })}
           >New room</Button>
-
           <Modal
-            show={this.state.show}
+            show={!!this.state.show}
             onHide={this.handleHide}
             container={this}
             aria-labelledby="contained-modal-title"
@@ -102,6 +110,7 @@ class Room extends Component {
               value={this.state.newRoomName}
               style={{width: 500, height: 40}}
               placeholder={"Enter a new room name"}
+              onKeyPress={(e) => this.handleKeyPress(e)}
             /> &nbsp;
           </Modal.Body>
           <Modal.Footer>
@@ -109,6 +118,7 @@ class Room extends Component {
             <Button
               bsStyle="primary"
               bsSize="small"
+
               onClick={(e) => this.submitHandler(e)}
             >Submit</Button>
           </Modal.Footer>

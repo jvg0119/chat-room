@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import '../css/Message.css';
+import MessageComponent from './MessageComponent';
 
 class Message extends Component {
 
@@ -19,7 +20,7 @@ class Message extends Component {
 //      roomId: '', //"abc1234567",
       roomListMessages: [],
       messageContent: '',
-      showEdit: true,
+      showEdit: false,
     }
   }
 
@@ -67,21 +68,32 @@ class Message extends Component {
     this.messagesRef.child(message.key).remove();
   }
 
-  editMessageHandler(message) {
-    this.setState({selectedMessage: message.content})
-    this.setState({messageContent: message.content})
-  }
-
-  editOnChangeHandler(e) {
-    this.setState({messageContent: e.target.value})
-  }
-
-  updateMessageHandler(e, message) {
-    // console.log('updateMessageHandler !!! >>> ', message)
-    const replaceContent  = this.props.firebase.database().ref(`messages/${message.key}`);
-    // console.log('>>>>>> ', `messages/${message.key}`)
-    replaceContent.update({content: this.state.messageContent})
-  }
+// added MessageComponent then move the code below to it
+// then moved the render part also
+  // editMessageHandler(message) {
+  //   this.setState({
+  //     selectedMessage: message.content,
+  //     messageContent: message.content,
+  //     showEdit: true
+  //   });
+  //   console.log('showEdit is >>> ', this.state.showEdit)
+  // }
+  //
+  // editOnChangeHandler(e) {
+  //   this.setState({messageContent: e.target.value})
+  // }
+  //
+  // updateMessageHandler(e, message) {
+  //   const oldMessage = message.content;
+  //   if (oldMessage !== this.state.messageContent) {
+  //     const replaceContent  = this.props.firebase.database().ref(`messages/${message.key}`);
+  //     replaceContent.update({content: this.state.messageContent})
+  //
+  //   } else {
+  //     // this.setState({ showEdit: false });
+  //     this.setState({ showEdit: false });
+  //   }
+  // }
 
   updateDisplayedMessages(activeRoom) {
     if(activeRoom && activeRoom.key) {
@@ -192,28 +204,11 @@ class Message extends Component {
                 onClick={() => this.removeMessage(message)}
               >del</button>
 
-                {
-                  message.content !== this.state.selectedMessage
-                  ?
-                    <button
-                    className="message-edit-btn"
-                    onClick={() => this.editMessageHandler(message)}
-                    >edit</button>
-                  :
-                    <div>
-                      <input
-                        type="text"
-                        className="update-message"
-                        value={this.state.messageContent}
-                        onChange={(e) => this.editOnChangeHandler(e)}
-                      />
-                      <button
-                        className="message-update-btn"
-                        onClick={(e) => this.updateMessageHandler(e, message)}
-                        >update
-                      </button>
-                    </div>
-                }
+                <MessageComponent
+                  message={message}
+                  firebase={this.props.firebase}
+                />
+
             </div>
           </ListGroupItem>
         </div>
